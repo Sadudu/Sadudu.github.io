@@ -73,12 +73,14 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -105,6 +107,13 @@
 
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -169,11 +178,11 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="/dudulau@qq.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="/Sadudu.GitHub.com" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/Sadudu" title="GitHub"></a>
                             
                                 <a class="fa 知乎" href="https://www.zhihu.com/people/Sadudu/posts" title="知乎"></a>
+                            
+                                <a class="fa bilibili" href="https://space.bilibili.com/220784547/#/" title="bilibili"></a>
                             
                                 <a class="fa QQ" href="tencent://message/?uin=1025389563&Site=http://vps.shuidazhe.com&Menu=yes" title="QQ"></a>
                             
@@ -249,11 +258,11 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="/dudulau@qq.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="/Sadudu.GitHub.com" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Sadudu" title="GitHub"></a>
                             
                                 <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/Sadudu/posts" title="知乎"></a>
+                            
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/220784547/#/" title="bilibili"></a>
                             
                                 <a class="fa QQ" target="_blank" href="tencent://message/?uin=1025389563&Site=http://vps.shuidazhe.com&Menu=yes" title="QQ"></a>
                             
@@ -327,15 +336,9 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/07/test/">
-                    test
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/07/hello-world/">
+                <a href="/2015/12/03/hello-world/">
                     Hello World
                 </a>
             </div>
@@ -398,27 +401,47 @@
 
 
     
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://Sadudulab.com/2018/07/07/hello-Sadudu/';
+            this.page.identifier = '2018/07/07/hello-Sadudu/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//sadudulab-com.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
 
 
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/07/test/" title="上一篇: test">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/07/hello-world/" title="下一篇: Hello World">
+            <a href="/2015/12/03/hello-world/" title="下一篇: Hello World">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/hello-Sadudu/">hello Sadudu</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/hello-Sadudu/">hello Sadudu</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/test/">TEST</a></li></ul>
 
 
 
@@ -491,24 +514,27 @@
 <script>
     // Open in New Window
     
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
+        $("a").attr("target", "_blank");
+        $("#scroll a, #toc a").removeAttr("target");
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
